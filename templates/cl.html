@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UEFA Champions league groups</title>
+    <style>
+        header {
+            text-align: center;
+            padding: 5px 6px;
+            position: relative;
+        }
+        body {
+            background-image: url('static/uefa_champions_league.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 10px;
+        }
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            color: white;
+        }
+
+        td, th {
+            border: 2px solid #000000;
+            text-align: left;
+            padding: 8px;
+            color: white;
+        }
+
+
+        .team-logo {
+            max-width: 30px;
+            max-height: 30px;
+        }
+
+        .emblem-logo {
+            max-width: 100px;
+            max-height: 100px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #000;
+            color: white;
+        }
+        h2 {
+            text-align: left;
+            color: #000;
+            color: white;
+        }
+
+        .footer {
+            position: bottom;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #fff;
+            color: #000000;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <br>
+        <div style="text-align: center;">
+            <img src="https://logowik.com/content/uploads/images/994_champions_league.jpg" alt="UEFA Champions League Emblem" class="emblem-logo">
+        </div>
+        <h1>UEFA Champions league groups</h1>
+    </header>
+
+    {% for group in data.standings %}
+    <div class="group-container">
+        <h2>Group {{ group.group }}</h2>
+        <table class="table-container">
+            <tr>
+                <th>Position</th>
+                <th>Team</th>
+                <th>Played Games</th>
+                <th>Won</th>
+                <th>Draw</th>
+                <th>Lost</th>
+                <th>Points</th>
+                <th>Goals For</th>
+                <th>Goals Against</th>
+                <th>Goal Difference</th>
+            </tr>
+            {% for team in group.table %}
+            <tr>
+                <td>{{ team.position }}</td>
+                <td>
+                    <img src="{{ team.team.crest }}" alt="{{ team.team.name }} Logo" class="team-logo">
+                    {{ team.team.name }}
+                </td>
+                <td>{{ team.playedGames }}</td>
+                <td>{{ team.won }}</td>
+                <td>{{ team.draw }}</td>
+                <td>{{ team.lost }}</td>
+                <td>{{ team.points }}</td>
+                <td>{{ team.goalsFor }}</td>
+                <td>{{ team.goalsAgainst }}</td>
+                <td>{{ team.goalDifference }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endfor %}
+<br>
+    <div class="footer">
+        <p>Football Database &copy; 2023</p>
+    </div>
+
+</body>
+
+</html>

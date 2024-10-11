@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 6 Leagues Goal Scorers</title>
+    <style>
+        body {
+            background-image: url('https://dailypost.ng/wp-content/uploads/2021/11/How-Much-Does-a-Soccer-Player-Make-per-Goal.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .league-button {
+            margin: 30px 50px;
+            padding: 15px 30px;
+            width: 250px;
+            text-align: center;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .league-button:nth-child(2) {
+            background-color: #2196F3;
+        }
+
+        .league-button:nth-child(3) {
+            background-color: #4CAF50;
+        }
+
+        .league-button:nth-child(4) {
+            background-color: #FF9800;
+        }
+
+        .league-button:nth-child(5) {
+            background-color: #9C27B0;
+        }
+        .league-button:nth-child(6) {
+            background-color: #964B00;
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Top 6 Leagues Goal Scorers</h1>
+    </div>
+    <div class="button-container">
+        <a href="{{ url_for('pls') }}"><button class="league-button">Premier League</button></a>
+        <a href="{{ url_for('ligas') }}"><button class="league-button">La Liga</button></a>
+        <a href="{{ url_for('bls') }}"><button class="league-button">Bundesliga</button></a>
+        <a href="{{ url_for('sas') }}"><button class="league-button">Serie A</button></a>
+        <a href="{{ url_for('l1s') }}"><button class="league-button">Ligue 1</button></a>
+        <a href="{{ url_for('Eredivisies') }}"><button class="league-button">Eredivisie</button></a>
+    </div>
+    <br>
+    <div class="footer">
+        <p>Football Database &copy; 2023</p>
+    </div>
+</body>
+
+</html>

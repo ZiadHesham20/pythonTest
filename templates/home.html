@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cs50 Football Database - Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+
+        .welcomemessage {
+            color: orange;
+            font-size: 25px;
+            background-color: black;
+            padding: 0px;
+            display: inline-block;
+        }
+
+        header {
+            text-align: center;
+            padding: 1px;
+
+        }
+
+        #navbar {
+            text-align: center;
+            margin-top: 0px;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 0px;
+        }
+
+        .footer {
+            position: bottom;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-container button {
+            padding: 20px;
+            font-size: 16px;
+        }
+        .iframe-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .iframe-container iframe {
+            width: 50%;
+            height: 315px;
+        }
+
+
+        h2     {
+
+            font-size: 30px;
+            color: white;
+        }
+        .league-button {
+            margin: 30px 50px;
+            padding: 15px 30px;
+            width: 250px;
+            text-align: center;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <br>
+        <img src="https://www.freepnglogos.com/uploads/football-png/football-aitc-sports-football-logo-22.png" alt="site logo" style="max-width: 150px; max-height: 150px;">
+        <h1>Cs50 Football Database</h1>
+        <h2>Home Page</h2>
+    </header>
+
+    {% if user_name %}
+        <div id="navbar">
+            <ul>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </div>
+    {% else %}
+        <div id="navbar">
+            <ul>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            </ul>
+        </div>
+    {% endif %}
+
+    <div id="content">
+        {% if user_name %}
+            <p class="welcomemessage"> Welcome, {{ user_name }}!</p>
+        {% endif %}
+
+        <div class="button-container">
+            <a href="{{ url_for('today_matches') }}"><button class="league-button">Today's Matches</button></a>
+            <a href="{{ url_for('standings') }}"><button class="league-button">Top 6 Leagues Standings</button></a>
+            <a href="{{ url_for('scorers') }}"><button class="league-button">Top 6 Leagues Top Scorers</button></a>
+            <a href="{{ url_for('cl') }}"><button class="league-button">Champions League groups</button></a>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="footer">
+            <p>Football Database &copy; 2023</p>
+        </div>
+
+</body>
+
+</html>

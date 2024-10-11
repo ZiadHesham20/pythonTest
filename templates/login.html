@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CS50 Football Database - Login</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login</title>
+    <style>
+        .message {
+            color: white;
+            font-size: 20px;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        .link {
+            color: white;
+            font-size: 20px;
+        }
+        h2{
+            color: white;
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        }
+        footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CS50 Football Database</h1>
+    </header>
+
+    <div id="content">
+        <h2>Login</h2>
+        {% if message %}
+            <p class="error-message">{{ message }}</p>
+        {% endif %}
+        <form action="/login" method="POST">
+            <input type="text" name="username" placeholder="Username" required><br><br>
+            <input type="password" name="password" placeholder="Password" required><br><br>
+            <button type="submit">Login</button>
+        </form>
+        <p class="message">Don't have an account? <a class="link" href="/register">register</a>.</p>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer>
+        <p>Football Database &copy; 2023</p>
+    </footer>
+</body>
+</html>

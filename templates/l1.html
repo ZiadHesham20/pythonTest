@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ligue 1 Standings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 70%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .champions-league {
+            background-color: #aaffaa;
+        }
+        .champions-league-qualification {
+            background-color: #FFFF00;
+        }
+        .europa-league {
+            background-color: #ffff99;
+        }
+
+        .europa-league-qualification {
+            background-color: #99ccff;
+        }
+
+        .conference-league {
+            background-color: #ccf5ff;
+        }
+
+        .relegation {
+            background-color: #ffaaaa;
+        }
+
+        .relegation-playoff {
+            background-color: #ffb366;
+        }
+        .footer {
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ligue 1 Standings</h1>
+    <table>
+        <tr>
+            <th>Position</th>
+            <th>Team Name</th>
+            <th>Logo</th>
+            <th>pl</th>
+            <th>W</th>
+            <th>L</th>
+            <th>D</th>
+            <th>Goals For</th>
+            <th>Goals Against</th>
+            <th>Goal Difference</th>
+            <th>Points</th>
+        </tr>
+        {% for entry in data['standings'][0]['table'] %}
+            <tr
+                {% if entry['position'] <= 3 %}
+                    class="champions-league"
+                {% elif entry['position'] == 4 %}
+                    class="champions-league-qualification"
+                {% elif entry['position'] == 5 %}
+                    class="europa-league"
+                {% elif entry['position'] == 6 %}
+                    class="conference-league"
+                {% elif entry['position'] > 16 %}
+                    class="relegation"
+                {% elif entry['position'] == 16 %}
+                    class="relegation-playoff"
+                {% endif %}>
+
+                <td>{{ entry['position'] }}</td>
+                <td>{{ entry['team']['name'] }}</td>
+                <td><img src="{{ entry['team']['crest'] }}" alt="{{ entry['team']['name'] }} Logo" style="max-width: 50px; max-height: 50px;"></td>
+                <td>{{ entry['playedGames'] }}</td>
+                <td>{{ entry['won'] }}</td>
+                <td>{{ entry['lost'] }}</td>
+                <td>{{ entry['draw'] }}</td>
+                <td>{{ entry['goalsFor'] }}</td>
+                <td>{{ entry['goalsAgainst'] }}</td>
+                <td>{{ entry['goalDifference'] }}</td>
+                <td>{{ entry['points'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p>*Teams highlighted in light green qualify for the Champions League.</p>
+    <p>*The team in yellow qualifies for the the Champions League qualifications.
+    <p>*The team in light yellow qualifies for the Europa League.
+    <p>*Teams in light blue qualify for the Europa Conference League qualification.</p>
+    <p>*The team highlighted in orange will compete in the relegation playoffs.</p>
+    <p>*Teams in red will be relegated.</p>
+    <div class="footer">
+        <p>Football Database &copy; 2023</p>
+    </div>
+</body>
+
+</html>

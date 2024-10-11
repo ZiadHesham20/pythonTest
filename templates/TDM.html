@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Today's Matches</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 50px;
+        }
+
+        th,
+        td {
+            border: 2px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            white-space: nowrap;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        img {
+            max-width: 50px;
+            max-height: 50px;
+        }
+
+        .footer {
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Today's Matches</h1>
+    </div>
+    <table>
+        <tr>
+            <th>Competition</th>
+            <th>Status</th>
+            <th>Home Team</th>
+            <th>Away Team</th>
+            <th>Score</th>
+            <th>Start Time</th>
+        </tr>
+        {% for match in data['matches'] %}
+        <tr>
+            <td>{{ match['competition']['name'] }}</td>
+            <td>{{ match['status'] }}</td>
+            <td><img src="{{ match['homeTeam']['crest'] }}" alt="Home Team Crest"> {{ match['homeTeam']['name'] }}</td>
+            <td><img src="{{ match['awayTeam']['crest'] }}" alt="Away Team Crest"> {{ match['awayTeam']['name'] }}</td>
+            <td>{{ match['score']['fullTime']['home'] }} - {{ match['score']['fullTime']['away'] }}</td>
+            <td>{{ match['utcDate'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+<br>
+    <div class="footer">
+        <p>Football Database &copy; 2023</p>
+    </div>
+
+</body>
+
+</html>
